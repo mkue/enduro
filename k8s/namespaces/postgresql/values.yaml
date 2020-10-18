@@ -1,7 +1,5 @@
 postgresql:
-  global:
-    postgresql:
-      postgresqlUsername: enduro
-      postgresqlDatabase: enduro
-      postgresqlPostgresPassword: enduro
+  postgresqlUsername: enduro
+  postgresqlDatabase: enduro
+  postgresqlPassword: enduro
   initdbScriptsConfigMap: init-db-scripts
