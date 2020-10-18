@@ -36,5 +36,5 @@ spec:
             - containerPort: 8080
           env:
             - name: API_URL
-              value: http://postgrest:3000
+              value: http://localhost:3000
 

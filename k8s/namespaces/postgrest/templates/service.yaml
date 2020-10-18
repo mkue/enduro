@@ -14,5 +14,5 @@ spec:
       targetPort: 3000
     - name: swagger
       protocol: TCP
-      port: 8080
+      port: 3001
       targetPort: 8080
