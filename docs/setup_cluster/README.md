@@ -17,6 +17,8 @@
   `kubectl config use-context gke_aerobic-oxide-292915_europe-west2-a_cluster-1`
 
 
+- To temporarily turn off the cluster, navigate to the cluster in the web interface, select the node pool and set the number of nodes to 0.
+
 # Install Argo CD
 
 See https://argoproj.github.io/argo-cd/getting_started/
@@ -45,25 +47,32 @@ See https://argoproj.github.io/argo-cd/getting_started/
 
 - Create root application in Argo CD web interface
 
-```
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: root
-spec:
-  destination:
-    name: ''
-    namespace: argocd
-    server: 'https://kubernetes.default.svc'
-  source:
-    path: k8s/apps
-    repoURL: 'https://github.com/mkue/enduro'
-    targetRevision: HEAD
-    directory:
-      recurse: true
-  project: default
-  syncPolicy:
-    automated:
-      prune: false
-      selfHeal: false
-```
+  ```
+  apiVersion: argoproj.io/v1alpha1
+  kind: Application
+  metadata:
+    name: root
+  spec:
+    destination:
+      name: ''
+      namespace: argocd
+      server: 'https://kubernetes.default.svc'
+    source:
+      path: k8s/apps
+      repoURL: 'https://github.com/mkue/enduro'
+      targetRevision: HEAD
+      directory:
+        recurse: true
+    project: default
+    syncPolicy:
+      automated:
+        prune: false
+        selfHeal: false
+  ```
+
+
+- Namespaces have to be created manually for every app that is deployed, e.g. 
+  
+  ```
+  kubectl create namespace postgresql
+  ``` 
