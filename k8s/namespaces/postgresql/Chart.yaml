@@ -1,0 +1,3 @@
+name: postgresql
+apiVersion: v1
+version: 0.0.1
