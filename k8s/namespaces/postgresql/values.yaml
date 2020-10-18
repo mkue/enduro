@@ -1,3 +1,4 @@
-postgresqlDatabase: enduro
-postgresqlUsername: enduro
-postgresqlPostgresPassword: enduro
+postgresql:
+  postgresqlDatabase: enduro
+  postgresqlUsername: enduro
+  postgresqlPostgresPassword: enduro
