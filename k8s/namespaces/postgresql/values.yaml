@@ -1,4 +1,4 @@
 postgresql:
   postgresqlDatabase: enduro
-  postgresqlUsername: enduro
   postgresqlPostgresPassword: enduro
+  initdbScriptsConfigMap: init-db-scripts
