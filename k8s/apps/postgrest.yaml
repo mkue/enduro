@@ -7,14 +7,12 @@ spec:
   project: default
   source:
     repoURL: https://github.com/mkue/enduro
-    path: k8s/namespaces/postgresql
+    path: k8s/namespaces/postgrest
     targetRevision: master
-    helm:
-      valueFiles:
-        - values.yaml
+    helm: { }
   destination:
     server: https://kubernetes.default.svc
-    namespace: postgresql
+    namespace: postgrest
   syncPolicy:
     automated:
       prune: false

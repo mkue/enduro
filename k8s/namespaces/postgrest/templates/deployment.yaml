@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgrest
+  namespace: postgrest
+  labels:
+    app: postgrest
+spec:
+  selector:
+    matchLabels:
+      app: postgrest
+  template:
+    metadata:
+      labels:
+        app: postgrest
+    spec:
+      containers:
+        - name: postgrest
+          image: postgrest/postgrest:v7.0.1
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: PGRST_DB_URI
+              value: postgres://postgres:enduro@postgresql.postgresql:5432/enduro
+            - name: PGRST_DB_SCHEMA
+              value: public
+            - name: PGRST_DB_ANON_ROLE
+              value: postgres # In production this role should not be the same as the one used for the connection
+
+          ports:
+            - containerPort: 3000
+
+        - name: swagger-ui
+          image: swaggerapi/swagger-ui:v3.35.2
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: API_URL
+              value: http://postgrest
+
