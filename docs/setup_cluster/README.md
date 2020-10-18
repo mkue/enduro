@@ -43,4 +43,27 @@ See https://argoproj.github.io/argo-cd/getting_started/
 
 - Go to localhost and login with user admin and pod name from above
 
+- Create root application in Argo CD web interface
 
+```
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root
+spec:
+  destination:
+    name: ''
+    namespace: argocd
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: k8s/apps
+    repoURL: 'https://github.com/mkue/enduro'
+    targetRevision: HEAD
+    directory:
+      recurse: true
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+```
