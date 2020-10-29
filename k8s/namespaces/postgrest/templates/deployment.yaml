@@ -17,7 +17,7 @@ spec:
       containers:
         - name: postgrest
           image: postgrest/postgrest:v7.0.1
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           env:
             - name: PGRST_DB_URI
               value: postgres://enduro:enduro@postgresql.postgresql:5432/enduro
