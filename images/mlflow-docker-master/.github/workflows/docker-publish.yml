@@ -3,16 +3,13 @@ name: Docker
 on:
   push:
     tags:
-      - image/mlflow/v*
+      - '**'
 
 env:
   IMAGE_ID: docker.pkg.github.com/mkue/enduro/mlflow
 
 jobs:
-  # Push image to GitHub Packages.
-  # See also https://docs.docker.com/docker-hub/builds/
-  push:
-
+  publish:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
 
