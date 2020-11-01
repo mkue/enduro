@@ -10,12 +10,8 @@ from config import Config
 from ingestion.brand_detecter import BrandDetector
 from ingestion.video_ingester import VideoIngesterInput, VideoIngester
 from utils import kafka_setup
-
-
 @dataclass
 class StartVideoIngester:
-    """Starting a video ingestion process"""
-
     input: VideoIngesterInput
 
     def execute(self, config: Config):
@@ -30,8 +26,6 @@ class StartBrandDetector:
 
 @dataclass
 class Program:
-    """Some top-level command"""
-
     command: Union[StartVideoIngester, StartBrandDetector]
 
     def execute(self):
@@ -48,7 +42,7 @@ class Program:
 
     @staticmethod
     def configure_logging() -> None:
-        with open("resources/logging.yml", "r") as stream:
+        with open('resources/logging.yml', "r") as stream:
             logging_config = yaml.load(stream, Loader=yaml.SafeLoader)
         logging.config.dictConfig(logging_config)
 
