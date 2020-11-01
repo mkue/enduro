@@ -3,10 +3,14 @@ name: Docker
 on:
   push:
     tags:
-      - '**'
+      - image/mlflow/v*
 
 env:
   IMAGE_ID: docker.pkg.github.com/mkue/enduro/mlflow
+
+defaults:
+  run:
+    working-directory: images/mlflow
 
 jobs:
   publish:
