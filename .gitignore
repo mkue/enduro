@@ -1,2 +1,5 @@
 .idea/
 .DS_Store
+test-reports/
+.pytest_cache/
+.mypy_cache/
